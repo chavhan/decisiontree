@@ -1,0 +1,23 @@
+ctree on iris dataset 
+
+model_ctree 
+1) Petal.Length <= 1.9; criterion = 1, statistic = 106.626
+  2)*  weights = 38 
+1) Petal.Length > 1.9
+  3) Petal.Width <= 1.7; criterion = 1, statistic = 53.663
+    4) Petal.Length <= 4.7; criterion = 0.996, statistic = 10.757
+      5)*  weights = 34 
+    4) Petal.Length > 4.7
+      6)*  weights = 7 
+  3) Petal.Width > 1.7
+    7)*  weights = 35 
+
+> summary(model_ctree)
+    Length      Class       Mode 
+         1 BinaryTree         S4
+
+> train_accuray
+[1] 0.9736842
+
+> test_accuray
+[1] 0.9166667

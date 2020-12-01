@@ -1,0 +1,40 @@
+[1] "Undergrad"       "Marital.Status"  "Taxable.Income"  "City.Population" "Work.Experience" "Urban"
+
+"Undergrad"       - binary 
+"Marital.Status"  - many lebels 
+"Urban" - binary 
+
+> str(Fraud_check)
+'data.frame':	600 obs. of  6 variables:
+ $ Undergrad      : chr  "NO" "YES" "NO" "YES" ...
+ $ Marital.Status : chr  "Single" "Divorced" "Married" "Single" ...
+ $ Taxable.Income : int  68833 33700 36925 50190 81002 33329 83357 62774 83519 98152 ...
+ $ City.Population: int  50047 134075 160205 193264 27533 116382 80890 131253 102481 155482 ...
+ $ Work.Experience: int  10 18 30 15 28 0 8 3 12 4 ...
+ $ Urban          : chr  "YES" "YES" "YES" "YES" ...
+
+> str(f_check)
+'data.frame':	600 obs. of  6 variables:
+ $ Undergrad      : num  1 2 1 2 1 1 1 2 1 2 ...
+ $ Marital.Status : num  3 1 2 3 2 1 1 3 3 1 ...
+ $ Taxable.Income : int  68833 33700 36925 50190 81002 33329 83357 62774 83519 98152 ...
+ $ City.Population: int  50047 134075 160205 193264 27533 116382 80890 131253 102481 155482 ...
+ $ Work.Experience: int  10 18 30 15 28 0 8 3 12 4 ...
+ $ Urban          : num  2 2 2 2 1 1 2 2 2 2 ...
+
+> head(final_data)
+  Undergrad Marital.Status Taxable.Income City.Population Work.Experience Urban
+1         1              3              1           50047              10     2
+2         2              1              1          134075              18     2
+3         1              2              1          160205              30     2
+4         2              3              1          193264              15     2
+5         1              2              1           27533              28     1
+6         1              1              1          116382               0     1
+
+> train_accuray
+[1] 0.7933333
+
+[1] 0.7933333
+> test_pred
+
+

@@ -1,0 +1,87 @@
+ "Sales"       "CompPrice"   "Income"      "Advertising" "Population"  "Price"       "ShelveLoc"   "Age"        
+ [9] "Education"   "Urban"       "US" 
+
+
+dim(Company_Data)
+[1] 400  11
+
+"ShelveLoc"  - many labels
+"Urban"       - binary
+"US"   - binary
+
+
+> str(Company_Data)
+'data.frame':	400 obs. of  11 variables:
+ $ Sales      : num  9.5 11.22 10.06 7.4 4.15 ...
+ $ CompPrice  : int  138 111 113 117 141 124 115 136 132 132 ...
+ $ Income     : int  73 48 35 100 64 113 105 81 110 113 ...
+ $ Advertising: int  11 16 10 4 3 13 0 15 0 0 ...
+ $ Population : int  276 260 269 466 340 501 45 425 108 131 ...
+ $ Price      : int  120 83 80 97 128 72 108 120 124 124 ...
+ $ ShelveLoc  : chr  "Bad" "Good" "Medium" "Medium" ...
+ $ Age        : int  42 65 59 55 38 78 71 67 76 76 ...
+ $ Education  : int  17 10 12 14 13 16 15 10 10 17 ...
+ $ Urban      : chr  "Yes" "Yes" "Yes" "Yes" ...
+ $ US         : chr  "Yes" "Yes" "Yes" "Yes" ...
+
+> head(company_new_data)
+  Sales CompPrice Income Advertising Population Price ShelveLoc Age Education Urban US
+1  9.50       138     73          11        276   120         1  42        17     2  2
+2 11.22       111     48          16        260    83         2  65        10     2  2
+3 10.06       113     35          10        269    80         3  59        12     2  2
+4  7.40       117    100           4        466    97         3  55        14     2  2
+5  4.15       141     64           3        340   128         1  38        13     2  2
+6 10.81       124    113          13        501    72         1  78        16     1  1
+
+> c50_model <- C5.0(train_data$Sales~.,data = train_data)
+Error: C5.0 models require a factor outcome
+
+> ctree_model
+
+	 Conditional inference tree with 12 terminal nodes
+
+Response:  train_data$Sales 
+Inputs:  CompPrice, Income, Advertising, Population, Price, ShelveLoc, Age, Education, Urban, US 
+Number of observations:  301 
+
+1) Price <= 96; criterion = 1, statistic = 56.515
+  2) CompPrice <= 123; criterion = 0.984, statistic = 9.905
+    3) Price <= 89; criterion = 0.953, statistic = 7.967
+      4)*  weights = 28 
+    3) Price > 89
+      5)*  weights = 14 
+  2) CompPrice > 123
+    6)*  weights = 17 
+1) Price > 96
+  7) Advertising <= 8; criterion = 1, statistic = 32.703
+    8) Price <= 130; criterion = 0.994, statistic = 11.873
+      9) CompPrice <= 121; criterion = 1, statistic = 20.834
+        10) ShelveLoc <= 1; criterion = 0.973, statistic = 8.961
+          11)*  weights = 12 
+        10) ShelveLoc > 1
+          12)*  weights = 28 
+      9) CompPrice > 121
+        13)*  weights = 52 
+    8) Price > 130
+      14)*  weights = 50 
+  7) Advertising > 8
+    15) Age <= 62; criterion = 0.997, statistic = 13.254
+      16) Price <= 134; criterion = 0.998, statistic = 14.1
+        17) Income <= 68; criterion = 0.982, statistic = 9.711
+          18)*  weights = 26 
+        17) Income > 68
+          19) CompPrice <= 131; criterion = 0.966, statistic = 8.55
+            20)*  weights = 21 
+          19) CompPrice > 131
+            21)*  weights = 10 
+      16) Price > 134
+        22)*  weights = 12 
+    15) Age > 62
+      23)*  weights = 31 
+
+> sale_accuracy
+[1] 0.5089762
+
+> summary(sale_accuracy)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  0.509   0.509   0.509   0.509   0.509   0.509 
